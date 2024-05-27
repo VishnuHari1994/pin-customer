@@ -36,8 +36,6 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
   buttonText: string = ADD_CUSTOMER_BUTTON_TEXT;
 
   regionAndCountry: RegionAndCountryModel = {};
-
-  isSubmitted: boolean = false;
   regionsList: string[] = [];
   countryList: string[] = [];
   destroyed$ = new Subject();
@@ -133,7 +131,6 @@ getListOfRegionAndCountry() {
 * Closes the modal after saving the details.
 */
 submitForm() {
-  this.isSubmitted = true;
   this.customerForm.markAllAsTouched();
   if (this.customerForm.invalid) return;
   let data: AddCustomerDetailsModel[] =
