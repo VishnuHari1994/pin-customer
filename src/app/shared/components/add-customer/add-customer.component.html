@@ -20,7 +20,7 @@
           required
         />
       </div>
-      <div *ngIf="isSubmitted && (addCustomer['name'].control)" class="text-danger ms-2 mt-1">
+      <div *ngIf="checkValidaty(addCustomer['name'].control)" class="text-danger ms-2 mt-1">
         {{addCustomer['name'].errorMessage}}
       </div>
     </div>
