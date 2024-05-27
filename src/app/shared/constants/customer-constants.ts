@@ -1,6 +1,6 @@
 export const ADD_CUSTOMER_MODAL_TITLE = 'Add Customer';
 
-export const ADD_CUSTOMER_BUTTON_TEXT = 'Add New Customer';
+export const ADD_CUSTOMER_BUTTON_TEXT = 'Create Customer';
 
 export const ADD_CUSTOMER_FORM: {
   [key: string]: {
