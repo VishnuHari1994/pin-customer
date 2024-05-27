@@ -39,7 +39,7 @@
                   (click)="$event.stopPropagation();uploader.clearQueue()"></a>
               </div>
               <input hidden #imageUpload ng2FileSelect type="file" [uploader]="uploader"
-                [formControlName]="fields.control" [id]="fields.id" class="form-control"
+                [id]="fields.id" class="form-control"
                 [placeholder]="fields.placeholder" required (change)="onFileChange($event)" />
                 <div *ngIf="uploader.queue[0]?.isUploading" class="progress" style="">
                   <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>

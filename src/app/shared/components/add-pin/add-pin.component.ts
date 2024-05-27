@@ -80,6 +80,8 @@ export class AddPinComponent implements OnInit {
       }
     };
     reader.readAsDataURL(file);
+    this.addPinForm.get('pinImage')?.setValue(file);
+    this.addPinForm.get('pinImage')?.updateValueAndValidity();
   }
 
   /**
@@ -128,7 +130,7 @@ edit() {
         this.uploader.addToQueue([file]);
         this.addPinForm
           .get(data.control)
-          ?.setValue(this.filtered[0][data.control]);
+          ?.setValue(file);
       } else {
         this.addPinForm
           .get(data.control)
@@ -264,14 +266,14 @@ setRadioButtonValue(value: string, control: string) {
 * Updates or saves the pin details based on the presence of an ID.
 */
 submitForm() {
+  this.addPinForm.markAllAsTouched();
+  if (this.addPinForm.invalid) return;
   if (
     !this.id ||
     this.filtered[0].pinImage.fileUrl !== this.imageSrc?.fileUrl
   ) {
     this.uploader.uploadAll();
   }
-  this.addPinForm.markAllAsTouched();
-  if (this.addPinForm.invalid) return;
   let data: PinListModel[] = this.pinService.getPinDetails();
   const pinData = {
     ...this.addPinForm.getRawValue(),

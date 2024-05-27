@@ -52,12 +52,10 @@ h5{
 
 .pinImage-container {
     width: 200px;
-    height: 200px;
+    height: 150px;
 }
 
 .pinImage {
-    // width: 200px;
-    // height: 100px;
     width: 100%;
     height: 100%;
 }
@@ -92,7 +90,7 @@ h5{
   .icon-button {
     flex: 1;
   }
-  
+
   .content{
     height: 100% !important;
     padding: 1rem;
@@ -170,7 +168,7 @@ ol, ul{
   background-color: transparent;
   outline-color: $color-button!important;
   color: $color-button!important;
- 
+
 }
 
 .icon{
