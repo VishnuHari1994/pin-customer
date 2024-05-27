@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import './assets/mixin/variable.scss';
+@import 'bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: 'Mon-black';
+    src: url('../src/assets/fonts/Montserrat-Black.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-bold';
+    src: url('../src/assets/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-extrabold';
+    src: url('../src/assets/fonts/Montserrat-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-italic';
+    src: url('../src/assets/fonts/Montserrat-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-light';
+    src: url('../src/assets/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-medium';
+    src: url('../src/assets/fonts/Montserrat-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-regular';
+    src: url('../src/assets/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Mon-semibold';
+    src: url('../src/assets/fonts/Montserrat-SemiBold.ttf');
+}
+
+
+h5 {
+    margin: 0;
+}
+
+.ngx-select__selected-plural {
+    border-radius: 20px;
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover{
+        background-color: $color-high-white;
+        color: $color-black;
+        
+    }
+    
+
+}
+
+
+.ngx-select__selected-plural, .ngx-select__clear{
+    font-size: $font-size-12;
+    padding: 3px 10px;
+
+}

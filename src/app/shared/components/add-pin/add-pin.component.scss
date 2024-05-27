@@ -1,0 +1,53 @@
+
+@import '../../../../assets/mixin/variable.scss';
+button {
+    font-size: $font-10;
+    width: fit-content;
+    height: 30px;
+}
+
+.modal-body{
+    font-family: 'Mon-medium';
+
+
+.modal-title{
+    font-size: $fornt-size-20;
+    color: $color-primary;
+}
+
+.text-danger{
+    font-size: $font-size-12;
+}
+::ng-deep .form-font-size  .form-control {
+    font-size: $font-size-12;
+}
+
+::ng-deep .ngx-select__multiple .ngx-select__search{
+    font-size: $font-size-12;
+}
+.my-drop-zone{
+    width: 100%;
+    font-size: 12px;
+    padding: 6px 12px;
+    background-color: rgba(105, 141, 224, 0.24);;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-top-left-radius: var(--bs-border-radius) !important;
+    border-top-right-radius: var(--bs-border-radius) !important;
+    border-bottom-left-radius: var(--bs-border-radius) !important;
+    border-bottom-right-radius: var(--bs-border-radius) !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    &:hover{
+        background-color: var($color-white);;
+    }
+}
+.uploading, .progress{
+    width: 100%;
+}
+.form-control:focus {
+  border-color: #ced4da; /* default B5 color or set your own color*/
+  outline: none !important;
+  box-shadow: none !important;
+}
+}

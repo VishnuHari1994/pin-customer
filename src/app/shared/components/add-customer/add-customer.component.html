@@ -1,0 +1,80 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+  <a
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="closeModal()"
+  ></a>
+</div>
+<div class="modal-body p-4">
+  <form class="form-font-size" [formGroup]="customerForm">
+    <div class="mb-3">
+      <label class="form-label" for="name">{{addCustomer['name'].label}}</label>
+      <div class="input-group required">
+        <input
+          [formControlName]="addCustomer['name'].control"
+          [id]="addCustomer['name'].id"
+          class="form-control"
+          [placeholder]="addCustomer['name'].placeholder"
+          required
+        />
+      </div>
+      <div *ngIf="isSubmitted && (addCustomer['name'].control)" class="text-danger ms-2 mt-1">
+        {{addCustomer['name'].errorMessage}}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="email">{{addCustomer['email'].label}} </label>
+      <div class="input-group">
+        <input
+          type="email"
+          [formControlName]="addCustomer['email'].control"
+          [id]="addCustomer['email'].id"
+          class="form-control"
+          [placeholder]="addCustomer['email'].placeholder"
+          required
+        />
+      </div>
+      <div *ngIf="checkValidaty(addCustomer['email'].control)" class="text-danger ms-2 mt-1">
+             {{addCustomer['email'].errorMessage}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="region">{{addCustomer['region'].label}}</label>
+      <div class="input-group">
+        <ngx-select
+          class="w-100"
+          [items]="regionsList"
+          [placeholder]="addCustomer['region'].placeholder"
+          [id]="addCustomer['region'].id"
+          [formControlName]="addCustomer['region'].control"
+        ></ngx-select>
+      </div>
+      <div *ngIf="checkValidaty(addCustomer['region'].control)" class="text-danger ms-2 mt-1">
+        {{addCustomer['region'].errorMessage}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="country"> {{addCustomer['country'].label}}</label>
+      <div class="input-group">
+        <ngx-select
+          class="w-100"
+          [placeholder]="addCustomer['country'].placeholder"
+          [id]="addCustomer['country'].id"
+          [items]="countryList"
+          [formControlName]="addCustomer['country'].control"
+        ></ngx-select>
+      </div>
+      <div *ngIf="checkValidaty(addCustomer['country'].control)" class="text-danger ms-2 mt-1">
+        {{addCustomer['country'].errorMessage}}
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="submit" (click)="submitForm()" class="btn btn-outline-primary">
+    {{buttonText}}
+  </button>
+</div>

@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    {{ id ? addPinModalDetails.editTitle : addPinModalDetails.addTitle }}
+  </h4>
+  <a class="btn-close" aria-label="Close" (click)="closeModal()"></a>
+</div>
+<div class="modal-body p-4">
+  <form class="form-font-size " [formGroup]="addPinForm">
+    <ng-container *ngFor="let fields of addPinModalDetails.pinFormFields">
+      <div class="mb-3">
+        <label class="form-label" [for]="fields.label">{{
+          fields.label
+          }}</label>
+        <div class="input-group required">
+          <ng-container [ngSwitch]="fields.type">
+            <ng-container *ngSwitchCase="'input'">
+              <input [formControlName]="fields.control" [id]="fields.id" class="form-control"
+                [placeholder]="fields.placeholder" required />
+            </ng-container>
+            <ng-container *ngSwitchCase="'select'">
+              <ngx-select class="w-100" [items]="collaboratoryList" [multiple]="fields.multiSelect || false"
+                [placeholder]="fields.placeholder || ''" [id]="fields.id"
+                [formControlName]="fields.control"></ngx-select>
+            </ng-container>
+            <ng-container *ngSwitchCase="'radio'">
+              <div class="gap-3 input-group  ">
+                <div class=" d-flex gap-2" *ngFor="let radio of fields.radioButtons">
+                  <input class="form-check-input" [value]="radio" (click)="setRadioButtonValue(radio, fields.control)"
+                    [formControlName]="fields.control" [type]="fields.type" [checked]="addPinForm.controls[fields.control].value === radio" [id]="radio" />
+                  <label [for]="radio">{{ radio }}</label>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'image'">
+              <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                [uploader]="uploader" (click)="!uploader.queue.length ? chooseImage(imageUpload) : undefined" (onFileDrop)="dropped($event)" 
+                class="well my-drop-zone form-control">{{!uploader.queue.length ?  fields.placeholder : uploader.queue[0].file.name}}
+                <a class="btn-close text-danger" aria-label="clear"
+                  (click)="$event.stopPropagation();uploader.clearQueue()"></a>
+              </div>
+              <input hidden #imageUpload ng2FileSelect type="file" [uploader]="uploader"
+                [formControlName]="fields.control" [id]="fields.id" class="form-control"
+                [placeholder]="fields.placeholder" required (change)="onFileChange($event)" />
+                <div *ngIf="uploader.queue[0]?.isUploading" class="progress" style="">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+
+              <div class="text-danger ms-2 mt-1" *ngIf="hasError">
+                <p >Only image files are allowed (jpg, png, gif).</p>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div *ngIf="checkValidaty(fields.control)" class="text-danger ms-2 mt-1">
+          {{ fields.errorMessage }}
+        </div>
+      </div>
+    </ng-container>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="submit" (click)="submitForm()" class="btn btn-outline-primary">
+    {{ id ? addPinModalDetails.editButtonText : addPinModalDetails.addButtonText }}
+  </button>
+</div>

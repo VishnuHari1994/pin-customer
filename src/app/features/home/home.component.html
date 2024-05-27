@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center w-100 h-100 content">
+    <div class="col-xl-10 col-md-10  col-sm-10 margin-tp">
+        <div class="w-100 add-details">
+            <span class="heading">{{tableDetails.title}}</span>
+            <div class="action-btns">
+                <a type="button" (click)="openModal('CUSTOMER')"
+                    class="btn border border-primary text-primary bg-white btn-lg text-nowrap button">
+                    + {{ title}}
+                </a>
+                <a type="button" (click)="openModal('PIN')" class="btn text-primary border-primary bg-white btn-lg text-nowrap button add-pin-button">
+                    + {{ addPinModalDetails.addTitle }}
+                </a>
+            </div>
+        </div>
+
+
+        <table class=" pin-table table table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th *ngFor="let item of tableDetails.tableHeader" scope="col" class="table-head">{{item}}</th>
+                </tr>
+            </thead>
+
+            <tbody class=" w-100">
+                <tr *ngFor="let item of pinList">
+                    <td scope="row">{{ item.title }}</td>
+                    <td>
+                        <div class="pinImage-container">
+                            <img [class]="item.pinImage ? 'pinImage' : ''" [src]="item?.pinImage?.fileUrl" [alt]="item.title" />
+                        </div>
+                    </td>
+                    <td>
+                        <ol>
+                            <li *ngFor="let li of item.collaboratory">
+                                <span>{{ li }}</span>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>{{ item.privacy }}</td>
+                    <td>
+                        <button class="icon" (click)="openeditModal('PIN',item.id)"><i
+                                class="bi bi-pencil-square"></i></button>
+                        <button class="icon trash" (click)="deletePin(item.id)"><i class="bi-trash"></i></button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <div *ngIf="pinList && pinList.length === 0" class="w-100 text-center no-pins">
+        <span class="m-auto"> {{tableDetails.noPins}}</span></div>
+
+
+        <div class="mobile-view">
+            <div *ngFor="let item of pinList" class="card my-2">
+                <span class="ms-auto"><span class="fw-bold">{{privacy}}:</span> {{item.privacy}}</span>
+                <h2 class="card-title">{{item.title}}</h2>
+                <img class="card-image"
+                    [src]="item.pinImage ? item.pinImage.fileUrl: 'https://imgs.search.brave.com/wCz90I7YjArdvgkHlSiXP1kBgJEIAWOadHZTjMvflBY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zdDIu/ZGVwb3NpdHBob3Rv/cy5jb20vNDE2NDAz/MS82NDU1L2kvNDUw/L2RlcG9zaXRwaG90/b3NfNjQ1NTQ1Nzct/c3RvY2stcGhvdG8t/cGFub3JhbWljLXdh/cm0tc3Vuc2V0Lmpw/Zw'"
+                    alt="Card Image">
+
+                <p><strong>{{collaboratory}}</strong></p>
+                <ol class="card-list">
+                    <li *ngFor="let collaborat of item.collaboratory" class="card-list-item">{{collaborat}}</li>
+                </ol>
+                <div class="d-flex gx-2">
+                    <button class="icon icon-button" (click)="openeditModal('PIN',item.id)">Edit <i
+                        class="bi bi-pencil-square"></i></button>
+                    <button class="icon trash icon-button" (click)="deletePin(item.id)">Delete <i class="bi-trash"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

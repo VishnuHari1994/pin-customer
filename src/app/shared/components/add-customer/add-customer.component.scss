@@ -1,0 +1,42 @@
+@import '../../../../assets/mixin/variable.scss';
+
+button {
+    font-size: $font-10;
+    width: fit-content;
+    height: 30px;
+}
+
+.modal-body{
+    font-family: 'Mon-medium';
+.modal-title{
+    font-size: $fornt-size-20;
+    color: $color-primary;
+    font-family: 'Mon-semibold' !important;
+}
+
+.text-danger{
+    font-size: $font-size-12;
+}
+.form-font-size  .form-control {
+    font-size: $font-size-12;
+}
+
+::ng-deep .ngx-select__placeholder {
+    font-size: $font-size-12;
+}
+::ng-deep .form-control:focus {
+  border-color: #ced4da; /* default B5 color or set your own color*/
+  outline: none !important;
+  box-shadow: none !important;
+}
+input-group:focus{
+  border-color: #ced4da; /* default B5 color or set your own color*/
+  outline: none !important;
+  box-shadow: none !important;
+}
+ngx-select:focus{
+  border-color: #ced4da; /* default B5 color or set your own color*/
+  outline: none !important;
+  box-shadow: none !important;
+}
+}
